@@ -1,0 +1,3 @@
+
+import Header from '../components/Header'; import Footer from '../components/Footer'; import BookingWidget from '../components/BookingWidget'; import AIChat from '../components/AIChat'
+export default function Home(){ return (<div><Header /><main><div className="container"><div className="card mt-6"><h1 className="text-2xl font-bold">BVETRA</h1><p className="text-gray-600 mt-2">Персональные трансферы</p></div><div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"><div className="md:col-span-2"><BookingWidget /></div><div><div className="card"><h3 className="font-semibold">О нас</h3><p className="text-sm text-gray-600 mt-2">Быстро и удобно.</p></div></div></div></div></main><AIChat /><Footer /></div>) }
