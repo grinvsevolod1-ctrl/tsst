@@ -44,6 +44,12 @@
     "eslint-config-next": "15.2.3",
     "postcss-import": "^15.1.0",
     "prettier": "^3.2.5",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+"next-auth": "^5.0.0-beta.25",
+"@auth/core": "^0.35.0",
+"@auth/prisma-adapter": "^1.1.0",
+"@prisma/client": "^5.19.1",
+"prisma": "^5.19.1"
+
   }
 }
