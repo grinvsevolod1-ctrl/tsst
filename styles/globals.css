@@ -1,7 +1,0 @@
-
-@tailwind base; @tailwind components; @tailwind utilities;
-:root{--bg:#fbf8f2;--card:#fffaf6;--text:#0b1220;--accent:#c9a66b}
-body{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
-.container{max-width:1100px;margin:0 auto;padding:1rem}
-.card{background:var(--card);border-radius:12px;padding:1rem}
-.btn{padding:0.6rem 1rem;border-radius:10px;background:var(--accent);color:#fff}

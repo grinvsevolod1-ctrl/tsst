@@ -1,3 +1,0 @@
-
-import Link from 'next/link'
-export default function Header(){ return (<header className="header w-full py-4 px-4 border-b"><div className="container flex items-center justify-between"><div className="flex items-center gap-3"><img src="/logo.png" alt="logo" width="56" height="56" className="rounded-full"/><div><h1 className="text-lg font-bold">BVETRA</h1><p className="text-sm text-gray-500">Transfer made delightful</p></div></div><nav className="flex items-center gap-4"><Link href="/"><a className="text-sm">Home</a></Link><Link href="/booking"><a className="text-sm">Booking</a></Link><Link href="/orders"><a className="text-sm">Orders</a></Link><Link href="/profile"><a className="text-sm">Profile</a></Link></nav></div></header>) }

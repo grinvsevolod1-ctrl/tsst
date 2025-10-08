@@ -1,3 +1,0 @@
-
-import Header from '../components/Header'; import Footer from '../components/Footer'; import {useEffect,useState} from 'react'
-export default function Profile(){ const [user,setUser]=useState(null); useEffect(()=>{ fetch('/api/auth/me').then(r=>r.json()).then(d=>{ if (d.ok) setUser(d.user) }) },[]); return (<div><Header /><main className="container mt-6"><div className="card max-w-md mx-auto"><h2 className="text-xl font-bold">Профиль</h2>{user ? (<div className="mt-3"><p><b>Email:</b> {user.email}</p><p><b>Created:</b> {user.createdAt}</p></div>) : <p className="text-gray-500">Не авторизован</p>}</div></main><Footer /></div>) }

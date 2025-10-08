@@ -1,5 +1,0 @@
-
-import {useState} from 'react'
-export default function Login(){ const [email,setEmail]=useState(''); const [sent,setSent]=useState(false); const [err,setErr]=useState('')
-  async function send(e){ e.preventDefault(); setErr(''); const r = await fetch('/api/auth/request-otp',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email })}); const d = await r.json(); if (d.ok) setSent(true); else setErr(d.error||'Ошибка') }
-  return (<div className="container"><div className="card max-w-md mx-auto mt-8"><h2 className="text-xl font-bold">Войти по Email (OTP)</h2>{!sent? (<form onSubmit={send} className="mt-3"><input value={email} onChange={e=>setEmail(e.target.value)} className="w-full border rounded p-2" placeholder="Email" /><div className="mt-3"><button className="btn">Получить код</button></div>{err && <p className="text-red-500 mt-2">{err}</p>}</form>) : (<div className="mt-3"><p>Код отправлен. Перейдите на страницу <a href="/verify" className="text-blue-600">подтверждения</a></p></div>)}</div></div>) }
