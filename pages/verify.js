@@ -1,0 +1,4 @@
+
+import {useState} from 'react'
+export default function Verify(){ const [email,setEmail]=useState(''); const [code,setCode]=useState(''); async function verify(e){ e.preventDefault(); const r=await fetch('/api/auth/verify-otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,code})}); const d=await r.json(); if (d.ok) window.location='/profile'; else alert(d.error||'err') }
+  return (<div className="container"><div className="card max-w-md mx-auto mt-8"><h2>Verify</h2><form onSubmit={verify}><input value={email} onChange={e=>setEmail(e.target.value)} className="w-full border rounded p-2" placeholder="Email" /><input value={code} onChange={e=>setCode(e.target.value)} className="w-full border rounded p-2 mt-2" placeholder="Code" /><div className="mt-3"><button className="btn">Verify</button></div></form></div></div>) }
