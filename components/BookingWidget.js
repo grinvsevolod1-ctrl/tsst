@@ -1,0 +1,5 @@
+
+import {useState} from 'react'
+export default function BookingWidget(){ const [pickup,setPickup]=useState(''); const [drop,setDrop]=useState(''); const [phone,setPhone]=useState('')
+  async function submit(e){ e.preventDefault(); const r=await fetch('/api/book',{method:'POST',headers:{'Content-Type':'application/json'}, body: JSON.stringify({ pickup, dropoff: drop, phone, car:'economy' })}); const d=await r.json(); if (d.ok){ alert('Заказ принят') } else { alert('Ошибка: '+(d.error||'')) } }
+  return (<div className="card"><h3 className="font-semibold">Быстрое бронирование</h3><form onSubmit={submit} className="mt-3 space-y-2"><input value={pickup} onChange={e=>setPickup(e.target.value)} className="w-full border rounded p-2" placeholder="Откуда" /><input value={drop} onChange={e=>setDrop(e.target.value)} className="w-full border rounded p-2" placeholder="Куда" /><input value={phone} onChange={e=>setPhone(e.target.value)} className="w-full border rounded p-2" placeholder="Телефон" /><div className="mt-3"><button className="btn">Отправить</button></div></form></div>) }
