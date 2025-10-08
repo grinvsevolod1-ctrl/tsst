@@ -1,45 +1,22 @@
 import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import GitHubProvider from "next-auth/providers/github";
+// import { PrismaAdapter } from "@auth/prisma-adapter";
+// import { prisma } from "@/lib/prisma"; // если используешь Prisma
 
 const handler = NextAuth({
+  // adapter: PrismaAdapter(prisma), // если добавишь базу
   providers: [
-    // Авторизация через Google
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-
-    // Авторизация через GitHub
-    GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    }),
-
-    // Обычная авторизация через email/password
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials) {
-        // ⚙️ Пример простой проверки
-        if (
-          credentials.email === "admin@example.com" &&
-          credentials.password === "123456"
-        ) {
-          return { id: 1, name: "Admin User", email: "admin@example.com" };
-        }
-        // Если данные неверные
-        return null;
-      },
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
   ],
-  pages: {
-    signIn: "/signin",
-  },
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };
